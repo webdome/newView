@@ -1,6 +1,6 @@
 module.exports = {
   data: {
-    age: 12
+    name: 12
   },
   methods: {
     howold(){

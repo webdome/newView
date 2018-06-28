@@ -1,2 +1,29 @@
 # newView
 Development Framework
+### 已实现
++ el
+  - css选择器
++ template
+  - 可以是字符串或者一个函数
++ data
++ computed
+  - 每一次render会重新计算一次
+  - 函数名作为键，返回值作为值
++ methods
++ events
+  - 事件处理函数
++ mixins
+  - 混入
+  - 目前支持 data、computed、methods、events
+  - 注意：View中已有的名称会被mixins覆盖
++ beforeCreate
+  - 数据方法事件还未挂载
++ beforeMount
+  - el还未挂载
++ mounted
+  - 完成全部挂载
++ updated
+  - 重绘完成触发
+### 待实现
+- two-way data-binding
+- components

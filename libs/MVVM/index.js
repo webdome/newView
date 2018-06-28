@@ -26,6 +26,9 @@ function elError(el) {
   }
 }
 
+
+// TODO: components实现
+// TODO: two-way data-binding  有点麻烦 不是所有data都需要
 function MVVM(options = {}) {
   elError(options.el)
   templateError(options.template)
@@ -57,7 +60,6 @@ function MVVM(options = {}) {
 }
 
 $.extend(MVVM.prototype, {
-  // TODO: two-way data-binding  有点麻烦 不是所有data都需要
   $mountData() {
     let data = this.$options.data;
     for (const key in data) {
@@ -108,13 +110,14 @@ $.extend(MVVM.prototype, {
   },
   $mountMixins() {
     let mixins = this.$options.mixins
+
     function add(mixin) {
       if (typeof mixin !== 'object') {
         throw new Error(mixins + ' this mixin is not a object!')
       }
       for (var key in mixin) {
         // TODO: 暂不支持 mixins in mixins
-        if(key==='mixins'){
+        if (key === 'mixins') {
           throw new Error('mixins in mixins is not support！')
         }
         if (_.contains(['data', 'computed', 'methods', 'events'], key)) {
@@ -128,10 +131,10 @@ $.extend(MVVM.prototype, {
     }
     if (mixins instanceof Array) {
       _.each(mixins, function (mixin) {
-        add.call(this,mixin);
+        add.call(this, mixin);
       }.bind(this))
     } else {
-      add.call(this,mixins);
+      add.call(this, mixins);
     }
   },
   $extractEvents() {
